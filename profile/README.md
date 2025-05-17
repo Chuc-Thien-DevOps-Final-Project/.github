@@ -2,16 +2,62 @@
 
 ## 🏢 Organization Purpose
 
-This GitHub organization was created to support the final DevOps assignment for my internship. The goal is to provision, deploy, and operate a microservices-based web application called **Go CoffeeShop** 🚀 in both **development** and **production** environments using best DevOps practices, including:
-
--   **Infrastructure as Code (IaC):** 🏗️ Terraform
--   **Environment Separation:** ↔️ Development and Production
--   **CI/CD Pipelines:** ⚙️ GitHub Actions
--   **GitOps:** 🚀 ArgoCD
--   **Monitoring and Health Checks:** 🩺
--   **Secure Credential Management:** 🔒 AWS Secrets Manager
+This GitHub organization was created to support the final DevOps assignment for my internship. The goal is to provision, deploy, and operate a microservices-based web application called **Go CoffeeShop** 🚀 in both **development** and **production** environments using DevOps practices.
 
 ---
+## ⚙️ Summary
+
+### 🏗️ Infrastructure as Code (IaC)
+
+* Leveraging **Terraform** to provision core infrastructure resources, including:
+    * ☁️ EC2 Instances
+    * ☸️ EKS Cluster
+    * VPC (Virtual Private Cloud)
+    * 🛡️ Security Groups
+
+### 🚀 Application Deployment
+
+* **Dev (Development Environment):**
+    * Deployed on a single **EC2 instance**.
+    * 🐳 **Docker** and **Docker Compose** are installed on the EC2 instance.
+    * Application services are defined in the `docker-compose.yml` file.
+    * 🩺 Health checks are configured for PostgreSQL and RabbitMQ.
+* **Prod (Production Environment):**
+    * A ☸️ **EKS cluster** is provisioned using Terraform, consisting of **2 t3.large EC2 worker nodes**.
+    * Application components are deployed via **Kubernetes YAML manifests**.
+    * 📈 **HPA** (Horizontal Pod Autoscaler) is configured for the `proxy` and `web-frontend` Deployments.
+    * 🌐 Integration with **Route 53** for DNS management and 🔒 **Cert-Manager** for automated **HTTPS** certificate provisioning.
+* **💾 Database:**
+    * Utilizing **Amazon RDS** with **PostgreSQL** (free-tier).
+    * 🔑 Database credentials are securely managed in **AWS Secrets Manager**.
+    * The RDS instance resides within a **private subnet** with Security Group rules restricting network access.
+
+## 🔄 CI/CD (Continuous Integration/Continuous Delivery)
+
+* **GitHub Actions** is employed to build CI/CD pipelines, which includes:
+    * Automated provisioning and teardown of the development environment.
+    * 🛡️ Automated **container image scanning** using **Trivy** with email notifications.
+    * 📤 Pushing the validated container image to a private **ECR** (Elastic Container Registry).
+    * ✍️ Automatically updating the image tag in `docker-compose.yml` and Kubernetes YAML manifests.
+    * 🔔 Notifications upon pipeline completion.
+* **CD (Continuous Delivery)** is implemented via **Argo CD** following a **GitOps pull-based model**.
+
+## 📊 Monitoring
+
+* The system is monitored using **Datadog**.
+* Key performance indicators (KPIs) are collected, including:
+    * CPU Utilization
+    * Memory Utilization
+    * HTTP Request Statistics (4xx Client Errors / 5xx Server Errors)
+    * HPA Status
+* 🚨 Alert if:
+    * 📈 HPA current replicas `>=` HPA max replicas
+    * ⚠️ CPU Usage exceeds 80% threshold
+    * ⚠️ 5xx Server Errors are occurring
+
+---
+
+
 
 ## 📂 Repositories Overview
 

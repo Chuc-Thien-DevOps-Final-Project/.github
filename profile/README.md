@@ -90,20 +90,6 @@ This GitHub organization was created to support the final DevOps assignment for 
 ---
 
 
-## ✅ Exam Coverage
-
-This organization addresses the following final exam requirements:
-
--   ✅ Infrastructure provisioning with Terraform (Development & Production)
--   ✅ CI/CD pipeline via GitHub Actions
--   ✅ Development deployment via Docker Compose on EC2
--   ✅ Production deployment on EKS with GitOps (ArgoCD)
--   ✅ PostgreSQL via AWS RDS (Free Tier) using Secrets Manager
--   ✅ Health checks and horizontal pod autoscaling
--   ✅ System monitoring using Datadog
-
----
-
 ## 📚 Reference Source Code
 
 Source Code (microservices): [https://github.com/thangchung/go-coffeeshop](https://github.com/thangchung/go-coffeeshop)

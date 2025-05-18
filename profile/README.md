@@ -83,6 +83,7 @@ Here are descriptions of the architecture diagrams for the CoffeeShop applicatio
 ### 3.1. Kubernetes Application Architecture Diagram
 
 ![Kubernetes Application Architecture](images/chart_k8s.jpg)
+![Kubernetes Application Architecture](images/chart_k8s.jpg)
 
 This diagram illustrates the Kubernetes-based architecture of the CoffeeShop application. It depicts the flow of traffic from a user accessing the application through a DNS (likely `ops-wat.chucthien.click`) which resolves to a Traefik ingress controller within a Kubernetes cluster.
 
